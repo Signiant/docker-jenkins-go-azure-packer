@@ -5,20 +5,6 @@ MAINTAINER devops@signiant.com
 RUN unlink /etc/localtime
 RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 
-# Install wget which we need later
-RUN yum install -y wget
-
-# Install device mapper libraries for docker
-RUN yum install -y deltarpm device-mapper device-mapper-event device-mapper-libs device-mapper-event-libs
-
-# Install EPEL
-RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
-
-# Install the repoforge repo (needed for updated git)
-RUN wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.3-1.el7.rf.x86_64.rpm -O /tmp/repoforge.rpm
-RUN yum install -y /tmp/repoforge.rpm
-RUN rm -f /tmp/repoforge.rpm
-
 COPY yum-packages.list /tmp/yum.packages.list
 RUN chmod +r /tmp/yum.packages.list
 RUN yum install -y `cat /tmp/yum.packages.list`
