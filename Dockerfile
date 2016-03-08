@@ -90,10 +90,11 @@ RUN npm install azure-cli -g
 RUN wget https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_linux_amd64.zip
 
 RUN mkdir /usr/local/bin/packer
+RUN mkdir /var/lib/jenkins/workspace
 
 RUN unzip packer_0.9.0_linux_amd64.zip -d /usr/local/bin/packer
 
-ENV GOROOT=/usr/bin/go
+ENV GOROOT=/usr/lib/golang
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/var/lib/jenkins/workspace
 
