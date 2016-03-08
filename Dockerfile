@@ -5,11 +5,8 @@ MAINTAINER devops@signiant.com
 RUN unlink /etc/localtime
 RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 
-# Install wget which we need later
+# Install wget which we need
 RUN yum install -y wget
-
-# Install device mapper libraries for docker
-RUN yum install -y device-mapper device-mapper-event device-mapper-libs device-mapper-event-libs
 
 # Install EPEL
 RUN rpm -ivh https://dl.fedoraproject.org/pub/epel/7/x86_64/e/epel-release-7-5.noarch.rpm
