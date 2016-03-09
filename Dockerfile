@@ -32,7 +32,6 @@ RUN unzip packer_0.9.0_linux_amd64.zip -d /usr/local/bin/packer
 
 ENV GOROOT=/usr/lib/golang
 ENV GOBIN=/usr/local/bin/packer
-ENV GOPATH=/var/lib/jenkins/workspace
 
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
