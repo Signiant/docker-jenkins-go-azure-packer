@@ -27,11 +27,13 @@ RUN npm install azure-cli -g
 RUN wget https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_linux_amd64.zip
 
 RUN mkdir /usr/local/bin/packer
+RUN mkdir -rf /home/bldmgr/goworkspace
 
 RUN unzip packer_0.9.0_linux_amd64.zip -d /usr/local/bin/packer
 
 ENV GOROOT=/usr/lib/golang
 ENV GOBIN=/usr/local/bin/packer
+ENV GOPATH=/home/bldmgr/goworkspace
 
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
