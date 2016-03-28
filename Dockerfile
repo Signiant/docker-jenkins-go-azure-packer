@@ -38,12 +38,12 @@ RUN ls /usr/local/go
 ENV GOROOT=/usr/local/go
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/home/bldmgr/goworkspace
+ENV GO15VENDOREXPERIMENT=1
 RUN export PATH=$PATH:/usr/local/go/bin
 
-
-RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
-RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure-arm
-RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
+RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
+RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure-arm
+RUN go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
 
 # Make sure anything/everything we put in the build user's home dir is owned correctly
 RUN chown -R $BUILD_USER:$BUILD_USER_GROUP /home/$BUILD_USER
