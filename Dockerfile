@@ -31,9 +31,14 @@ RUN mkdir /home/bldmgr/goworkspace
 
 RUN unzip packer_0.9.0_linux_amd64.zip -d /usr/local/bin/packer
 
-ENV GOROOT=/usr/lib/golang
+RUN wget https://storage.googleapis.com/golang/go1.6.linux-amd64.tar.gz -O /tmp/go1.6.linux-amd64.tar.gz
+RUN tar -C /usr/local -xzf /tmp/go1.6.linux-amd64.tar.gz
+
+ENV GOROOT=/usr/local/go
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/home/bldmgr/goworkspace
+RUN export PATH=$PATH:$GOROOT/bin
+
 
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure-arm
