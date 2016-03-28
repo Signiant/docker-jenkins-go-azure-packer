@@ -35,7 +35,7 @@ RUN wget https://storage.googleapis.com/golang/go1.5.3.linux-amd64.tar.gz -O /tm
 RUN tar -C /usr/local -xzf /tmp/go1.5.3.linux-amd64.tar.gz
 RUN ls /usr/local/go
 
-ENV GOROOT=/usr/local/go/bin
+ENV GOROOT=/usr/local/go
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/home/bldmgr/goworkspace
 RUN export PATH=$PATH:/usr/local/go/bin
