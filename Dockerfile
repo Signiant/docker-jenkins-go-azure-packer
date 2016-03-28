@@ -37,7 +37,7 @@ RUN tar -C /usr/local -xzf /tmp/go1.6.linux-amd64.tar.gz
 ENV GOROOT=/usr/local/go/bin
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/home/bldmgr/goworkspace
-RUN export PATH=$PATH:$GOROOT
+RUN export PATH=$PATH:/usr/local/go/bin
 
 
 RUN go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
