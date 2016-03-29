@@ -41,7 +41,6 @@ ENV GOPATH=/home/bldmgr/goworkspace
 ENV GO15VENDOREXPERIMENT=1
 RUN export PATH=$PATH:/usr/local/go/bin
 
-RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure
 RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-builder-azure-arm
 RUN /usr/local/go/bin/go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
 
