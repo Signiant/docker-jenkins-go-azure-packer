@@ -8,3 +8,5 @@ wget
 cloc
 zip
 unzip
+perl-devel
+perl-cpan
