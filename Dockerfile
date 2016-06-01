@@ -8,6 +8,7 @@ RUN ln -s /usr/share/zoneinfo/America/New_York /etc/localtime
 COPY yum-packages.list /tmp/yum.packages.list
 RUN chmod +r /tmp/yum.packages.list && \
     yum update -y && \
+    yum groupinstall -y "Development tools" && \
     yum install -y `cat /tmp/yum.packages.list`
 
 # Install the latest version of git
