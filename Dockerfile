@@ -31,12 +31,13 @@ RUN chmod +r /tmp/pip.packages.list && \
 RUN npm install azure-cli -g
 
 #setup user
-RUN addgroup -g $BUILD_DOCKER_GROUP_ID $BUILD_USER_GROUP && \
-    adduser -D $BUILD_USER -s /bin/sh -G $BUILD_USER_GROUP && \
+RUN deluser guest && delgroup users && addgroup -g $BUILD_DOCKER_GROUP_ID $BUILD_USER_GROUP
+
+RUN adduser -D $BUILD_USER -s /bin/sh -G $BUILD_USER_GROUP && \
     chown -R $BUILD_USER:$BUILD_USER_GROUP /home/$BUILD_USER && \
     echo "$BUILD_USER:$BUILD_PASS" | chpasswd
 
-RUN ssh-keygen -A
+RUN /usr/bin/ssh-keygen -A
 
 RUN set -x && \
     echo "UsePrivilegeSeparation no" >> /etc/ssh/sshd_config && \
@@ -47,10 +48,6 @@ RUN set -x && \
 RUN apk --update add sudo && \
     rm -rf /var/cache/apk/* && \
     echo "%${BUILD_USER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
-
-USER $BUILD_USER
-RUN touch ~/.sudo_as_admin_successful
-WORKDIR /home/$BUILD_USER
 
 #install packer
 RUN wget https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_linux_amd64.zip
