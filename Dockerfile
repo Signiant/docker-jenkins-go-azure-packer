@@ -54,11 +54,11 @@ RUN mkdir -p /var/lib/jenkins \
     && chown -R $BUILD_USER:$BUILD_USER_GROUP /var/lib/jenkins
 
 #install packer
-RUN wget https://releases.hashicorp.com/packer/0.9.0/packer_0.9.0_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/packer/0.10.1/packer_0.10.1_linux_amd64.zip
 
 RUN mkdir /usr/local/bin/packer && \
     mkdir /home/bldmgr/goworkspace && \
-    unzip packer_0.9.0_linux_amd64.zip -d /usr/local/bin/packer
+    unzip packer_0.10.1_linux_amd64.zip -d /usr/local/bin/packer
 
 ENV GOROOT=/usr/lib/go
 ENV GOBIN=/usr/local/bin/packer
