@@ -9,7 +9,9 @@ ENV BUILD_USER_GROUP users
 ENV BUILD_DOCKER_GROUP docker
 ENV BUILD_DOCKER_GROUP_ID 1001
 
-RUN apk --update add openjdk7-jre openssh git python wget nginx go && \
+COPY apk.packages.list /tmp/apk.packages.list
+RUN chmod +r /tmp/apk.packages.list && \
+    apk --update add `cat /tmp/apk.packages.list` && \
     rm -rf /var/cache/apk/*
 
 RUN npm install -g npm@${NPM_VERSION} && \
@@ -63,9 +65,8 @@ RUN mkdir /usr/local/bin/packer && \
 ENV GOROOT=/usr/lib/go
 ENV GOBIN=/usr/local/bin/packer
 ENV GOPATH=/home/bldmgr/goworkspace
-RUN export PATH=$PATH:/usr/lib/go/bin
-
-RUN go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
+RUN export PATH=$PATH:/usr/lib/go/bin && \
+    go get github.com/Azure/packer-azure/packer/plugin/packer-provisioner-azure-custom-script-extension
 
 EXPOSE 22
 
