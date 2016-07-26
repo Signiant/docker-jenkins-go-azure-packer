@@ -14,11 +14,6 @@ RUN chmod +r /tmp/apk.packages.list && \
     apk --update add `cat /tmp/apk.packages.list` && \
     rm -rf /var/cache/apk/*
 
-RUN npm install -g npm@${NPM_VERSION} && \
-  find /usr/lib/node_modules/npm -name test -o -name .bin -type d | xargs rm -rf && \
-  rm -rf /usr/share/man /tmp/* /root/.npm /root/.node-gyp \
-    /usr/lib/node_modules/npm/man /usr/lib/node_modules/npm/doc /usr/lib/node_modules/npm/html
-
 # Install pip
 RUN cd /tmp && \
     wget https://bootstrap.pypa.io/get-pip.py && \
