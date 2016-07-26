@@ -24,11 +24,17 @@ COPY pip.packages.list /tmp/pip.packages.list
 RUN chmod +r /tmp/pip.packages.list && \
     pip install `cat /tmp/pip.packages.list | tr \"\\n\" \" \"`
 
+#install umpire with pre
+
+RUN pip install umpire --pre
+
 # install azure-cli
 RUN npm install azure-cli -g
 
 #setup user
-RUN deluser guest && delgroup users && addgroup -g $BUILD_DOCKER_GROUP_ID $BUILD_USER_GROUP
+RUN deluser guest
+RUN delgroup users
+RUN addgroup -g $BUILD_DOCKER_GROUP_ID $BUILD_USER_GROUP
 
 RUN adduser -D $BUILD_USER -s /bin/sh -G $BUILD_USER_GROUP && \
     chown -R $BUILD_USER:$BUILD_USER_GROUP /home/$BUILD_USER && \
