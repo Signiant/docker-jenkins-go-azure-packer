@@ -3,6 +3,8 @@ openssh
 git
 python
 python-dev
+musl-dev
+linux-headers
 wget
 nginx
 go
