@@ -3,6 +3,7 @@ openssh
 git
 python
 python-dev
+libffi-dev
 musl-dev
 linux-headers
 wget
