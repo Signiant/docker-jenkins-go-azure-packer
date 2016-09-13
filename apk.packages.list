@@ -2,6 +2,7 @@ openjdk7-jre
 openssh
 git
 python
+python2-dev
 wget
 nginx
 go
