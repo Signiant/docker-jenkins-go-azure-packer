@@ -14,3 +14,4 @@ bash
 bash-doc
 jq
 gcc
+curl
