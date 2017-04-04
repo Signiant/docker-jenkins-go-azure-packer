@@ -6,8 +6,6 @@ ENV BUILD_USER bldmgr
 ENV BUILD_PASS bldmgr
 ENV BUILD_USER_ID 10012
 ENV BUILD_USER_GROUP users
-#ENV BUILD_DOCKER_GROUP docker
-#ENV BUILD_DOCKER_GROUP_ID 1001
 
 COPY apk.packages.list /tmp/apk.packages.list
 RUN chmod +r /tmp/apk.packages.list && \
@@ -32,11 +30,8 @@ RUN pip install umpire --pre
 RUN npm install azure-cli -g
 
 #setup user
-#RUN deluser guest
-#RUN delgroup users
-#RUN addgroup -g $BUILD_DOCKER_GROUP_ID $BUILD_USER_GROUP
 
-RUN adduser -D $BUILD_USER -s /bin/sh -G $BUILD_USER_GROUP && \
+RUN adduser -D $BUILD_USER -s /bin/bash -G $BUILD_USER_GROUP -u $BUILD_USER_ID && \
     chown -R $BUILD_USER:$BUILD_USER_GROUP /home/$BUILD_USER && \
     echo "$BUILD_USER:$BUILD_PASS" | chpasswd
 
