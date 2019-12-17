@@ -3,6 +3,7 @@ openssh
 git
 python
 python-dev
+python3-dev
 libffi-dev
 musl-dev
 linux-headers
@@ -15,3 +16,4 @@ bash-doc
 jq
 gcc
 curl
+make

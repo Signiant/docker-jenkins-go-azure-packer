@@ -27,7 +27,8 @@ RUN chmod +r /tmp/pip.packages.list && \
 RUN pip install umpire --pre
 
 # install azure-cli
-RUN npm install azure-cli -g
+RUN pip3 install --upgrade pip
+RUN pip3 install azure-cli
 
 #setup user
 
