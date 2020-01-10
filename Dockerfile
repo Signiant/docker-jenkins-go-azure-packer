@@ -28,10 +28,10 @@ RUN chmod +r /tmp/pip.packages.list && \
 #install packer
 RUN wget https://releases.hashicorp.com/packer/1.5.1/packer_1.5.1_linux_amd64.zip
 
-RUN mkdir /usr/local/bin/packer && \
-    mkdir /home/bldmgr/goworkspace && \
-    unzip packer_1.5.1_linux_amd64.zip -d /usr/local/bin/packer
+RUN mkdir /usr/local/packer && \
+    mkdir /root/goworkspace && \
+    unzip packer_1.5.1_linux_amd64.zip -d /usr/local/packer
 
 ENV GOROOT=/usr/lib/go
-ENV GOBIN=/usr/local/bin/packer
-ENV GOPATH=/home/bldmgr/goworkspace
+ENV GOBIN=/usr/local/packer
+ENV GOPATH=/root/goworkspace
