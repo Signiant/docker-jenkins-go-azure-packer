@@ -26,7 +26,7 @@ RUN chmod +r /tmp/pip.packages.list && \
     pip3 install `cat /tmp/pip.packages.list | tr \"\\n\" \" \"`
 
 #install packer
-RUN wget https://releases.hashicorp.com/packer/1.5.1/packer_1.5.1_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/packer/1.6.1/packer_1.6.1_linux_amd64.zip
 
 RUN mkdir /usr/local/packer && \
     mkdir /root/goworkspace && \
