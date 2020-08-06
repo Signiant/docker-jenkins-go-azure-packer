@@ -30,7 +30,7 @@ RUN wget https://releases.hashicorp.com/packer/1.6.1/packer_1.6.1_linux_amd64.zi
 
 RUN mkdir /usr/local/packer && \
     mkdir /root/goworkspace && \
-    unzip packer_1.5.1_linux_amd64.zip -d /usr/local/packer
+    unzip packer_1.6.1_linux_amd64.zip -d /usr/local/packer
 
 ENV GOROOT=/usr/lib/go
 ENV GOBIN=/usr/local/packer
