@@ -1,5 +1,5 @@
-FROM mhart/alpine-node:4
-MAINTAINER devops@signiant.com
+FROM mhart/alpine-node:16
+LABEL maintainer="devops@signiant.com"
 
 # Add our bldmgr user
 ENV BUILD_USER bldmgr
@@ -12,18 +12,12 @@ RUN chmod +r /tmp/apk.packages.list && \
     apk --update add `cat /tmp/apk.packages.list` && \
     rm -rf /var/cache/apk/*
 
-# Install pip
-RUN cd /tmp && \
-    wget https://bootstrap.pypa.io/get-pip.py && \
-    python ./get-pip.py
+# Upgrade pip
+RUN python3 -m ensurepip && python3 -m pip install --upgrade pip
 
 # Install PIP packages
-RUN pip3 install umpire --pre
-RUN pip3 install --upgrade pip
-RUN pip3 install azure-cli
 COPY pip.packages.list /tmp/pip.packages.list
-RUN chmod +r /tmp/pip.packages.list && \
-    pip3 install `cat /tmp/pip.packages.list | tr \"\\n\" \" \"`
+RUN python3 -m pip install -r /tmp/pip.packages.list
 
 #install packer
 RUN wget https://releases.hashicorp.com/packer/1.6.1/packer_1.6.1_linux_amd64.zip
