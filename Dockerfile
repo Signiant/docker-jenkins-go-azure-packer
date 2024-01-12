@@ -26,6 +26,9 @@ RUN mkdir /usr/local/packer && \
     mkdir /root/goworkspace && \
     unzip packer_1.9.4_linux_amd64.zip -d /usr/local/packer
 
+RUN /usr/local/packer/packer plugins install github.com/hashicorp/azure && \
+    /usr/local/packer/packer plugins install github.com/hashicorp/googlecompute
+
 ENV GOROOT=/usr/lib/go
 ENV GOBIN=/usr/local/packer
 ENV GOPATH=/root/goworkspace
