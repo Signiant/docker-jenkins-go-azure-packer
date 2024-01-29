@@ -14,6 +14,7 @@ RUN chmod +r /tmp/apk.packages.list && \
 
 # Upgrade pip
 RUN python3 -m ensurepip && python3 -m pip install --upgrade pip
+RUN az bicep install
 
 # Install PIP packages
 COPY pip.packages.list /tmp/pip.packages.list
