@@ -14,11 +14,11 @@ RUN chmod +r /tmp/apk.packages.list && \
 
 # Upgrade pip
 RUN python3 -m ensurepip && python3 -m pip install --upgrade pip
-RUN az bicep install
 
 # Install PIP packages
 COPY pip.packages.list /tmp/pip.packages.list
 RUN python3 -m pip install -r /tmp/pip.packages.list
+RUN az bicep install
 
 #install packer
 RUN wget https://releases.hashicorp.com/packer/1.9.4/packer_1.9.4_linux_amd64.zip
