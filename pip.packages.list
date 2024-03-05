@@ -2,4 +2,5 @@ argparse
 azure-cli
 azure-identity
 azure-mgmt-network
+slack-sdk
 umpire
