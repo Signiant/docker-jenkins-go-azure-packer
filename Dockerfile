@@ -21,11 +21,11 @@ RUN python3 -m pip install -r /tmp/pip.packages.list
 RUN az bicep install
 
 #install packer
-RUN wget https://releases.hashicorp.com/packer/1.9.4/packer_1.9.4_linux_amd64.zip
+RUN wget https://releases.hashicorp.com/packer/1.11.2/packer_1.11.2_linux_amd64.zip
 
 RUN mkdir /usr/local/packer && \
     mkdir /root/goworkspace && \
-    unzip packer_1.9.4_linux_amd64.zip -d /usr/local/packer
+    unzip packer_1.11.2_linux_amd64.zip -d /usr/local/packer
 
 RUN /usr/local/packer/packer plugins install github.com/hashicorp/azure && \
     /usr/local/packer/packer plugins install github.com/hashicorp/googlecompute
