@@ -24,7 +24,6 @@ RUN python3 -m ensurepip && \
 RUN curl -sSL https://sdk.cloud.google.com | bash && \
     mv /root/google-cloud-sdk /usr/local/google-cloud-sdk
 
-
 # Packer
 RUN wget https://releases.hashicorp.com/packer/1.11.2/packer_1.11.2_linux_amd64.zip && \
     mkdir /usr/local/packer && \
@@ -37,4 +36,4 @@ RUN wget https://releases.hashicorp.com/packer/1.11.2/packer_1.11.2_linux_amd64.
 ENV GOROOT=/usr/lib/go
 ENV GOBIN=/usr/local/packer
 ENV GOPATH=/root/goworkspace
-ENV PATH $PATH:/usr/local/packer:/root/google-cloud-sdk/bin
+ENV PATH $PATH:/usr/local/packer:/usr/local/google-cloud-sdk/bin
